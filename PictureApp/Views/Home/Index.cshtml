@@ -8,7 +8,7 @@
     .slide {
         display: none;
         object-fit: contain;
-        max-height: 800px;
+        max-height: 350px;
     }
 </style>
 
@@ -19,6 +19,7 @@
             <img class="slide" src="@Url.Content(image)" alt="" />
         }
     </div>
+    <input id="previous" type="button" value="Previous picture">
     <input id="next" type="button" value="Next picture">
 </body>
 
@@ -26,13 +27,31 @@
     window.onload = () => {
         let currentSlide = 0;
         const slides = document.getElementsByClassName("slide");
-        const button = document.getElementById("next").addEventListener("click", () => {
+        const buttonPrevious = document.getElementById("previous").addEventListener("click", () => {
+            previousSlide()
+        });
+        const buttonNext = document.getElementById("next").addEventListener("click", () => {
             nextSlide()
         });
 
         nextSlide();
 
+        function previousSlide() {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+
+            Array.from(slides).forEach(element => {
+                element.style.display = "none"
+            });
+
+            slides[currentSlide].style.display = "block";
+        }
+
         function nextSlide() {
+            currentSlide++;
+
             if (currentSlide > slides.length - 1) {
                 currentSlide = 0;
             }
@@ -41,9 +60,7 @@
                 element.style.display = "none"
             });
 
-            slides[currentSlide].style.display = "block";
-
-            currentSlide++;
+            slides[currentSlide].style.display = "block";  
         }
     }
 </script>
