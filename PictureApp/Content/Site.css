@@ -27,6 +27,7 @@ img.slide {
     display: none;
     object-fit: contain;
     height: 450px;
+    max-width: 600px;
 }
 
 .slideshow {
@@ -36,7 +37,7 @@ img.slide {
 }
 
 .slideshow-images {
-    margin: 10px 0
+    margin: 20px 0
 }
 
 .upload-container {
@@ -77,11 +78,6 @@ img.slide {
     background-color: #799;
 }
 
-#imageUpload:focus + label {
-    outline: 1px dotted #000;
-    outline: -webkit-focus-ring-color auto 5px;
-}
-
 #imageUpload + label svg {
     width: 1em;
     height: 1em;
@@ -89,4 +85,46 @@ img.slide {
     fill: currentColor;
     margin-top: -0.25em;
     margin-right: 0.25em;
+}
+
+.preview {
+    float: left;
+    position:relative;
+}
+
+.preview-images {
+    display: flex;
+    margin-top: 40px;
+    height: 500px;
+    flex-direction: column;
+    overflow:hidden;
+    outline:1px solid #DDD
+}
+
+.preview-image {
+    border:1px solid lightgray;
+    height:100px;
+    width:100px;
+    object-fit:scale-down;
+    margin: 5px 0;
+    cursor:pointer
+}
+
+#slideBack, #slide {
+    position: absolute;
+    font-size: 30px;
+    color: lightgray;;
+    right:35%
+}
+
+#slideBack:hover, #slide:hover {
+    cursor: pointer
+}
+
+#slideBack {
+    top:5px
+}
+
+#slide {
+    bottom:-35px
 }

@@ -11,6 +11,21 @@
         deleteImage()
     });
 
+    let elementsArray = document.querySelectorAll(".preview-image");
+    elementsArray.forEach(function (elem) {
+        elem.addEventListener("click", function () {
+            var src = elem.src.substring(elem.src.lastIndexOf("/"));
+            var i = 0;
+            Array.from(slides).forEach(e => {
+                if (src == e.src.substring(e.src.lastIndexOf("/"))) {
+                    currentSlide = i;
+                }
+                i++;
+            });
+            switchSlide();
+        });
+    });
+
     switchSlide();
 
     function previousSlide() {

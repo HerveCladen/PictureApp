@@ -5,6 +5,18 @@
 }
 
 <body>
+    <div class="preview">
+        <div id="preview-images" class="preview-images">
+            @foreach (var image in Model.Images)
+            {
+                <div class="container-preview">
+                    <img class="preview-image" src="@Url.Content(image)" alt="" />
+                </div>
+            }
+        </div>
+        <i id="slideBack" class="fas fa-arrow-circle-up"></i>
+        <i id="slide" class="fas fa-arrow-circle-down"></i>
+    </div>
     <div class="slideshow">
         <div class="slideshow-images">
             @foreach (var image in Model.Images)
@@ -32,4 +44,5 @@
 
 <script src="~/Scripts/script.js"></script>
 <script src="~/Scripts/image-upload.js"></script>
+<script src="~/Scripts/preview-scroll.js"></script>
 @Html.Raw(TempData["msg"])

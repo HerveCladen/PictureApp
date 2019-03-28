@@ -35,14 +35,13 @@ namespace PictureApp.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
-        [HttpGet, ValidateInput(false)]
+        
         public ActionResult DeleteImage(string filename)
         {
             try
             {
                 System.IO.File.Delete(Server.MapPath("~") + "Content\\Images\\" + filename);
-            } catch (Exception e) { }
+            } catch (Exception){}
             return RedirectToAction("Index", "Home");
         }
     }
