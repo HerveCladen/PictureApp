@@ -1,8 +1,8 @@
 ﻿body {
+    font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
     padding-top: 50px;
     padding-bottom: 20px;
 }
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -37,4 +37,56 @@ img.slide {
 
 .slideshow-images {
     margin: 10px 0
+}
+
+.upload-container {
+    float: right
+}
+
+.upload-container form {
+    display: flex;
+    align-items: center;
+    margin: 5px
+}
+
+#imageUpload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#imageUpload + label {
+    font-size: 1.25rem;
+    font-weight: 700;
+    white-space: nowrap;
+    color: white;
+    background-color: #366;
+    display: inline-block;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0.61em 1.25rem;
+    margin-right: 3px;
+    margin-bottom: 0
+}
+
+#imageUpload:focus + label,
+#imageUpload + label:hover {
+    background-color: #799;
+}
+
+#imageUpload:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+#imageUpload + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
 }

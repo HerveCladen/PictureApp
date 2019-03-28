@@ -19,5 +19,20 @@ namespace PictureApp.Controllers
             };
             return View(model);
         }
+
+        public ActionResult AddImage(List<HttpPostedFileBase> imageUpload)
+        {
+            if (imageUpload != null) {
+                foreach (HttpPostedFileBase item in imageUpload)
+                {
+                    try
+                    {
+                        item.SaveAs(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(item.FileName));
+                    }
+                    catch (Exception e) { }
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
