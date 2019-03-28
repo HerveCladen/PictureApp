@@ -7,6 +7,9 @@
     const buttonNext = document.getElementById("next").addEventListener("click", () => {
         nextSlide()
     });
+    const buttonDelete = document.getElementById("deleteImage").addEventListener("click", () => {
+        deleteImage()
+    });
 
     switchSlide();
 
@@ -31,5 +34,14 @@
             element.style.display = "none"
         });
         slides[currentSlide].style.display = "inline-block";
+    }
+
+    function deleteImage() {
+        var p = slides[currentSlide].src;
+        var s = p.substring(p.lastIndexOf('/') + 1);
+        location.href = 'Home/DeleteImage?filename=' + s;
+        
+        currentSlide = 0;
+        switchSlide();
     }
 }

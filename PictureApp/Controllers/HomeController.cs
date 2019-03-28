@@ -25,13 +25,24 @@ namespace PictureApp.Controllers
             if (imageUpload != null) {
                 foreach (HttpPostedFileBase item in imageUpload)
                 {
-                    try
+                    if (!System.IO.File.Exists(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(item.FileName)))
                     {
                         item.SaveAs(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(item.FileName));
-                    }
-                    catch (Exception e) { }
+                        TempData["msg"] = "<script>alert('Picture uploaded successfully');</script>";
+                    } else
+                        TempData["msg"] = "<script>alert('Upload failed');</script>"; 
                 }
             }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet, ValidateInput(false)]
+        public ActionResult DeleteImage(string filename)
+        {
+            try
+            {
+                System.IO.File.Delete(Server.MapPath("~") + "Content\\Images\\" + filename);
+            } catch (Exception e) { }
             return RedirectToAction("Index", "Home");
         }
     }
