@@ -4,63 +4,17 @@
     ViewBag.Title = "Home Page";
 }
 
-<style>
-    .slide {
-        display: none;
-        object-fit: contain;
-        max-height: 350px;
-    }
-</style>
-
 <body>
-    <div>
-        @foreach (var image in Model.Images)
-        {
-            <img class="slide" src="@Url.Content(image)" alt="" />
-        }
+    <div class="slideshow">
+        <div class="slideshow-images">
+            @foreach (var image in Model.Images)
+            {
+                <img class="slide" src="@Url.Content(image)" alt="" />
+            }
+        </div>
+        <button id="previous"><i class="fas fa-arrow-left"></i></button>
+        <button id="next"><i class="fas fa-arrow-right"></i></button>
     </div>
-    <input id="previous" type="button" value="Previous picture">
-    <input id="next" type="button" value="Next picture">
 </body>
 
-<script>
-    window.onload = () => {
-        let currentSlide = 0;
-        const slides = document.getElementsByClassName("slide");
-        const buttonPrevious = document.getElementById("previous").addEventListener("click", () => {
-            previousSlide()
-        });
-        const buttonNext = document.getElementById("next").addEventListener("click", () => {
-            nextSlide()
-        });
-
-        nextSlide();
-
-        function previousSlide() {
-            currentSlide--;
-            if (currentSlide < 0) {
-                currentSlide = slides.length - 1;
-            }
-
-            Array.from(slides).forEach(element => {
-                element.style.display = "none"
-            });
-
-            slides[currentSlide].style.display = "block";
-        }
-
-        function nextSlide() {
-            currentSlide++;
-
-            if (currentSlide > slides.length - 1) {
-                currentSlide = 0;
-            }
-
-            Array.from(slides).forEach(element => {
-                element.style.display = "none"
-            });
-
-            slides[currentSlide].style.display = "block";  
-        }
-    }
-</script>
+<script src="~/Scripts/script.js"></script>
