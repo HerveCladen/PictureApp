@@ -23,6 +23,71 @@ textarea {
     max-width: 280px;
 }
 
+button:focus {
+    outline: 0;
+}
+
+
+.preview {
+    float: left;
+    position:relative;
+}
+
+.preview-images {
+    display: flex;
+    margin-top: 40px;
+    padding: 0 5px;
+    height: 650px;
+    flex-direction: column;
+    overflow-y: scroll;
+    outline: 1px solid #DDD
+}
+
+.preview-images::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.preview-scrolled {
+    color: #CCC !important;
+}
+
+.preview-image {
+    border:1px solid lightgray;
+    height:100px;
+    width:100px;
+    object-fit:scale-down;
+    margin: 5px 0;
+    cursor:pointer;
+    border-radius:5px
+}
+
+#slideBack, #slide {
+    position: absolute;
+    font-size: 30px;
+    color: #999;
+    right:35%
+}
+
+#slideBack:hover, #slide:hover {
+    cursor: pointer
+}
+
+#slideBack {
+    top:5px
+}
+
+#slide {
+    bottom:-35px
+}
+
+
+.container-slideshow-upload {
+    display:flex;
+    flex-direction:column
+}
+
+
 img.slide {
     display: none;
     object-fit: contain;
@@ -36,9 +101,14 @@ img.slide {
     text-align: center
 }
 
+.slideshow button {
+    border-radius:3px;
+}
+
 .slideshow-images {
     margin: 20px 0
 }
+
 
 .upload-container {
     display:flex;
@@ -86,53 +156,4 @@ img.slide {
     fill: currentColor;
     margin-top: -0.25em;
     margin-right: 0.25em;
-}
-
-.preview {
-    float: left;
-    position:relative;
-}
-
-.preview-images {
-    display: flex;
-    margin-top: 40px;
-    padding: 0 5px;
-    height: 650px;
-    flex-direction: column;
-    overflow-y: scroll;
-    outline: 1px solid #DDD
-}
-
-.preview-images::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-.preview-image {
-    border:1px solid lightgray;
-    height:100px;
-    width:100px;
-    object-fit:scale-down;
-    margin: 5px 0;
-    cursor:pointer;
-    border-radius:5px
-}
-
-#slideBack, #slide {
-    position: absolute;
-    font-size: 30px;
-    color: lightgray;;
-    right:35%
-}
-
-#slideBack:hover, #slide:hover {
-    cursor: pointer
-}
-
-#slideBack {
-    top:5px
-}
-
-#slide {
-    bottom:-35px
 }

@@ -25,7 +25,15 @@ function scroll(element, direction, speed, distance, step) {
     }, speed);
 }
 
-var container = document.getElementById('preview-images');
-container.onwheel = function () {
-
+function scrolled(o) {
+    if (o.offsetHeight + o.scrollTop == o.scrollHeight) {
+        document.getElementById("slide").classList.add("preview-scrolled");
+    } else {
+        document.getElementById("slide").classList.remove("preview-scrolled");
+    }
+    if (o.scrollTop <= 0) {
+        document.getElementById("slideBack").classList.add("preview-scrolled");
+    } else {
+        document.getElementById("slideBack").classList.remove("preview-scrolled");
+    }
 }
