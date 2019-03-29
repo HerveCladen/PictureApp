@@ -49,6 +49,16 @@
             element.style.display = "none"
         });
         slides[currentSlide].style.display = "inline-block";
+
+        let elementsArray = document.querySelectorAll(".preview-image");
+        elementsArray.forEach(function (elem) {
+            var src = elem.src.substring(elem.src.lastIndexOf("/"));
+            if (src == slides[currentSlide].src.substring(slides[currentSlide].src.lastIndexOf("/"))) {
+                elem.style.border = "2px solid #DDD";
+            } else {
+                elem.style.border = "none";
+            }
+        });
     }
 
     function deleteImage() {

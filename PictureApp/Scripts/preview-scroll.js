@@ -1,16 +1,16 @@
 ﻿var button = document.getElementById('slide');
 button.onclick = function () {
     var container = document.getElementById('preview-images');
-    sideScroll(container, 'up', 25, 100, 10);
+    scroll(container, 'up', 25, 100, 10);
 };
 
 var back = document.getElementById('slideBack');
 back.onclick = function () {
     var container = document.getElementById('preview-images');
-    sideScroll(container, 'down', 25, 100, 10);
+    scroll(container, 'down', 25, 100, 10);
 };
 
-function sideScroll(element, direction, speed, distance, step) {
+function scroll(element, direction, speed, distance, step) {
     scrollAmount = 0;
     var slideTimer = setInterval(function () {
         if (direction == 'down') {
@@ -23,4 +23,9 @@ function sideScroll(element, direction, speed, distance, step) {
             window.clearInterval(slideTimer);
         }
     }, speed);
+}
+
+var container = document.getElementById('preview-images');
+container.onwheel = function () {
+
 }
