@@ -28,7 +28,6 @@ namespace PictureApp.Controllers
                     if (!System.IO.File.Exists(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(item.FileName)))
                     {
                         item.SaveAs(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(item.FileName));
-                        TempData["msg"] = "<script>alert('Picture uploaded successfully');</script>";
                     } else
                         TempData["msg"] = "<script>alert('Upload failed');</script>"; 
                 }

@@ -8,7 +8,7 @@
         nextSlide()
     });
     const buttonDelete = document.getElementById("deleteImage").addEventListener("click", () => {
-        deleteImage()
+        getConfirmation()
     });
 
     let elementsArray = document.querySelectorAll(".preview-image");
@@ -61,7 +61,17 @@
         });
     }
 
-    function deleteImage() {
+    function getConfirmation() {
+        var retVal = confirm("Delete this picture?");
+        if (retVal == true) {
+            deletePicture();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function deletePicture() {
         var p = slides[currentSlide].src;
         var s = p.substring(p.lastIndexOf('/') + 1);
         location.href = 'Home/DeleteImage?filename=' + s;
