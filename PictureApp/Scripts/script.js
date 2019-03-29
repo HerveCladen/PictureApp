@@ -10,6 +10,7 @@
     const buttonDelete = document.getElementById("deleteImage").addEventListener("click", () => {
         getConfirmation()
     });
+    const imageName = document.getElementById("image-name");
 
     let elementsArray = document.querySelectorAll(".preview-image");
     elementsArray.forEach(function (elem) {
@@ -55,6 +56,7 @@
             var src = elem.src.substring(elem.src.lastIndexOf("/"));
             if (src == slides[currentSlide].src.substring(slides[currentSlide].src.lastIndexOf("/"))) {
                 elem.style.border = "2px solid #DDD";
+                imageName.innerHTML = src;
             } else {
                 elem.style.border = "none";
             }

@@ -25,9 +25,10 @@ namespace PictureApp.Controllers
             if (imageUpload != null) {
                 foreach (HttpPostedFileBase item in imageUpload)
                 {
-                    if (!System.IO.File.Exists(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(item.FileName)))
+                    string fn = item.FileName.Replace("+", "-").Replace("#","-");
+                    if (!System.IO.File.Exists(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(fn)))
                     {
-                        item.SaveAs(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(item.FileName));
+                        item.SaveAs(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(fn));
                     } else
                         TempData["msg"] = "<script>alert('Upload failed');</script>"; 
                 }
