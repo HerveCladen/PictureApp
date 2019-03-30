@@ -26,9 +26,9 @@
                 }
                 <p id="image-name"></p>
             </div>
-            <button id="previous"><i class="fas fa-arrow-left"></i></button>
-            <button id="next"><i class="fas fa-arrow-right"></i></button>
-            <button id="deleteImage"><i class="fas fa-trash"></i></button>
+            <button title="Previous slide" id="previous"><i class="fas fa-arrow-left"></i></button>
+            <button title="Next slide" id="next"><i class="fas fa-arrow-right"></i></button>
+            <button title="Delete picture" id="deleteImage"><i class="fas fa-trash"></i></button>
         </div>
         <div class="upload-container">
             @using (Html.BeginForm("AddImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))

@@ -103,6 +103,7 @@ img.slide {
 
 .slideshow button {
     border-radius:3px;
+    background-color:#F5F5F5
 }
 
 .slideshow-images {
@@ -110,10 +111,15 @@ img.slide {
     outline: 1px solid #DDD
 }
 
+#image-name {
+    border-top: 1px solid #DDD;
+    background-color:#F5F5F5
+}
+
 
 .upload-container {
-    display:flex;
-    justify-content:space-around
+    display: flex;
+    justify-content: space-around
 }
 
 .upload-container form {

@@ -56,7 +56,7 @@
             var src = elem.src.substring(elem.src.lastIndexOf("/"));
             if (src == slides[currentSlide].src.substring(slides[currentSlide].src.lastIndexOf("/"))) {
                 elem.style.border = "2px solid #DDD";
-                imageName.innerHTML = src;
+                imageName.innerHTML = src.substring(1);
             } else {
                 elem.style.border = "none";
             }
