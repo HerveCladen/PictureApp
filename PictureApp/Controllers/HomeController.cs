@@ -22,16 +22,18 @@ namespace PictureApp.Controllers
 
         public ActionResult AddImage(List<HttpPostedFileBase> imageUpload)
         {
-            if (imageUpload != null) {
+            try {
                 foreach (HttpPostedFileBase item in imageUpload)
                 {
-                    string fn = item.FileName.Replace("+", "-").Replace("#","-");
+                    string fn = item.FileName.Replace("+", "_").Replace("#","_");
                     if (!System.IO.File.Exists(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(fn)))
                     {
                         item.SaveAs(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(fn));
                     } else
                         TempData["msg"] = "<script>alert('Upload failed');</script>"; 
                 }
+            } catch(Exception) {
+                TempData["msg"] = "<script>alert('Select a file to upload');</script>";
             }
             return RedirectToAction("Index", "Home");
         }

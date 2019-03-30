@@ -106,7 +106,8 @@ img.slide {
 }
 
 .slideshow-images {
-    margin: 20px 0
+    margin: 20px 0;
+    outline: 1px solid #DDD
 }
 
 
@@ -156,4 +157,8 @@ img.slide {
     fill: currentColor;
     margin-top: -0.25em;
     margin-right: 0.25em;
+}
+
+#imageSubmit:disabled {
+    cursor:default;
 }

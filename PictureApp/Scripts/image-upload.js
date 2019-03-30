@@ -2,7 +2,6 @@
 Array.prototype.forEach.call(inputs, function (input) {
     var label = input.nextElementSibling,
         labelVal = label.innerHTML;
-
     input.addEventListener('change', function (e) {
         var fileName = '';
         if (this.files && this.files.length > 1)
@@ -10,9 +9,12 @@ Array.prototype.forEach.call(inputs, function (input) {
         else
             fileName = e.target.value.split('\\').pop();
 
-        if (fileName)
+        if (fileName) {
             label.querySelector('span').innerHTML = fileName;
-        else
+            document.getElementById('imageSubmit').disabled = false;
+        } else {
             label.innerHTML = labelVal;
+            document.getElementById('imageSubmit').disabled = true;
+        }        
     });
 });
