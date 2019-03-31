@@ -15,15 +15,27 @@
     let elementsArray = document.querySelectorAll(".preview-image");
     elementsArray.forEach(function (elem) {
         elem.addEventListener("click", function () {
-            var src = elem.src.substring(elem.src.lastIndexOf("/"));
+            var src = elem.src.substring(elem.src.lastIndexOf("/")).replace(/\.[^/.]+$/, "");
             var i = 0;
             Array.from(slides).forEach(e => {
-                if (src == e.src.substring(e.src.lastIndexOf("/"))) {
+                if (src == e.src.substring(e.src.lastIndexOf("/")).replace(/\.[^/.]+$/, "")) {
                     currentSlide = i;
                 }
                 i++;
             });
             switchSlide();
+        });
+    });
+
+    let gifsArray = document.querySelectorAll(".gif");
+    gifsArray.forEach(function (elem) {
+        elem.addEventListener("mouseover", function () {
+            elem.src = "/Content/Images" + elem.src.substring(elem.src.lastIndexOf("/")).replace(/\.[^/.]+$/, ".") + "gif";
+        });
+    });
+    gifsArray.forEach(function (elem) {
+        elem.addEventListener("mouseout", function () {
+            elem.src = "/Content/GifStatic" + elem.src.substring(elem.src.lastIndexOf("/")).replace(/\.[^/.]+$/, ".") + "jpg";
         });
     });
 

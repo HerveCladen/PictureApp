@@ -10,7 +10,15 @@
             @foreach (var image in Model.Images)
             {
                 <div class="container-preview">
-                    <img class="preview-image" src="@Url.Content(image)" alt="" />
+                    @if (@Path.GetExtension(image) != ".gif")
+                    {
+                        <img class="preview-image" src="@Url.Content(image)" alt="" />
+                    }
+                    else
+                    {
+                        string gifpath = $"/Content/GifStatic/{Path.GetFileNameWithoutExtension(image)}.jpg";                        
+                        <img class="preview-image gif" src="@gifpath" alt="?????" />
+                    }
                 </div>
             }
         </div>

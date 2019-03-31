@@ -1,6 +1,8 @@
 ﻿using PictureApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -25,10 +27,21 @@ namespace PictureApp.Controllers
             try {
                 foreach (HttpPostedFileBase item in imageUpload)
                 {
-                    string fn = item.FileName.Replace("+", "_").Replace("#","_");
-                    if (!System.IO.File.Exists(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(fn)))
+                    string filename = item.FileName.Replace("+", "_").Replace("#","_");
+                    string path = Server.MapPath("~") + $"Content\\Images\\{Path.GetFileName(filename)}";
+                    if (!System.IO.File.Exists(path))
                     {
-                        item.SaveAs(Server.MapPath("~") + "Content\\Images\\" + Path.GetFileName(fn));
+                        item.SaveAs(path);
+                        if (Path.GetExtension(filename) == ".gif")
+                        {
+                            using (var img = Image.FromFile(path))
+                            {
+                                var dimension = new FrameDimension(img.FrameDimensionsList[0]);                               
+                                img.SelectActiveFrame(dimension, 0);
+                                var outputFile = Server.MapPath("~") + $"Content\\GifStatic\\{Path.GetFileNameWithoutExtension(filename)}.jpg";
+                                img.Save(outputFile, ImageFormat.Jpeg);
+                            }
+                        }
                     } else
                         TempData["msg"] = "<script>alert('Upload failed');</script>"; 
                 }
@@ -43,6 +56,10 @@ namespace PictureApp.Controllers
             try
             {
                 System.IO.File.Delete(Server.MapPath("~") + "Content\\Images\\" + filename);
+                if (Path.GetExtension(filename) == ".gif")
+                {
+                    System.IO.File.Delete(Server.MapPath("~") + "Content\\GifStatic\\" + Path.GetFileNameWithoutExtension(filename) + ".jpg");
+                }
             } catch (Exception){}
             return RedirectToAction("Index", "Home");
         }
