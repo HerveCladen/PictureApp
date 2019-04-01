@@ -35,7 +35,7 @@
     });
     gifsArray.forEach(function (elem) {
         elem.addEventListener("mouseout", function () {
-            elem.src = "/Content/GifStatic" + elem.src.substring(elem.src.lastIndexOf("/")).replace(/\.[^/.]+$/, ".") + "jpg";
+            elem.src = "/Content/GifStatic" + elem.src.substring(elem.src.lastIndexOf("/")).replace(/\.[^/.]+$/, ".") + "jpg";            
         });
     });
 

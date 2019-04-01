@@ -52,14 +52,34 @@ button:focus {
     color: #CCC !important;
 }
 
+.container-preview {
+    position: relative;
+    text-align: center;
+    color: #FFF;
+    margin: 5px 0;
+    font-size: 1.5em;
+    height:100px;
+}
+
+.container-preview:hover > i {
+    display:none;
+}
+
 .preview-image {
     border:1px solid lightgray;
-    height:100px;
+    height:100%;
     width:100px;
     object-fit:scale-down;
-    margin: 5px 0;
     cursor:pointer;
     border-radius:5px
+}
+
+.gif-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
 }
 
 #slideBack, #slide {
