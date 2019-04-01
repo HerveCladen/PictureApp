@@ -66,11 +66,11 @@
         let elementsArray = document.querySelectorAll(".preview-image");
         elementsArray.forEach(function (elem) {
             var src = elem.src.substring(elem.src.lastIndexOf("/"));
-            if (src == slides[currentSlide].src.substring(slides[currentSlide].src.lastIndexOf("/"))) {
+            if (src.replace(/\.[^/.]+$/, "") == slides[currentSlide].src.substring(slides[currentSlide].src.lastIndexOf("/")).replace(/\.[^/.]+$/, "")) {
                 elem.style.border = "2px solid #DDD";
-                imageName.innerHTML = src.substring(1);
+                imageName.innerHTML = slides[currentSlide].src.substring(slides[currentSlide].src.lastIndexOf("/")).substring(1);
             } else {
-                elem.style.border = "none";
+                elem.style.border = "1px solid #EEE";                
             }
         });
     }

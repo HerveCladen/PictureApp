@@ -6,23 +6,30 @@
 
 <body>
     <div class="preview">
-        <div onscroll="scrolled(this)" id="preview-images" class="preview-images">
-            @foreach (var image in Model.Images)
-            {
-                <div class="container-preview">
-                    @if (@Path.GetExtension(image) != ".gif")
-                    {
-                        <img class="preview-image" src="@Url.Content(image)" alt="" />
-                    }
-                    else
-                    {
-                        string gifpath = $"/Content/GifStatic/{Path.GetFileNameWithoutExtension(image)}.jpg";                        
-                        <img class="preview-image gif" src="@gifpath" alt="?????" />
-                        <i class="fas fa-play gif-logo"></i>
-                    }
-                </div>
-            }
-        </div>
+        @if (Model.Images.Count() > 0)
+        {
+            <div onscroll="scrolled(this)" id="preview-images" class="preview-images">
+                @foreach (var image in Model.Images)
+                {
+                    <div class="container-preview">
+                        @if (@Path.GetExtension(image) != ".gif")
+                        {
+                            <img class="preview-image" src="@Url.Content(image)" alt="" />
+                        }
+                        else
+                        {
+                            string gifpath = $"/Content/GifStatic/{Path.GetFileNameWithoutExtension(image)}.jpg";
+                            <img class="preview-image gif" src="@gifpath" alt="?????" />
+                            <i class="fas fa-play gif-logo"></i>
+                        }
+                    </div>
+                }
+            </div>
+        } else {
+            <div class="empty-preview">
+                No images, upload images to see a preview
+            </div>
+        }
         <i id="slideBack" class="fas fa-chevron-circle-up preview-scrolled"></i>
         <i id="slide" class="fas fa-chevron-circle-down"></i>
     </div>

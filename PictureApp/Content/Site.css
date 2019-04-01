@@ -43,6 +43,14 @@ button:focus {
     outline: 1px solid #DDD
 }
 
+.empty-preview {
+    width:100px;
+    margin-top: 40px;
+    padding: 0 5px;
+    outline: 1px solid #DDD; 
+    text-align: center
+}
+
 .preview-images::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -50,6 +58,7 @@ button:focus {
 
 .preview-scrolled {
     color: #CCC !important;
+    cursor: default !important;
 }
 
 .container-preview {
