@@ -132,7 +132,9 @@ img.slide {
 
 .slideshow button {
     border-radius:3px;
-    background-color:#F5F5F5
+    background-color:#F5F5F5;
+    width: 45px;
+    height: 32px;
 }
 
 .slideshow-images {
